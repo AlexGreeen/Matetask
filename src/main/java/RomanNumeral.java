@@ -1,14 +1,12 @@
-import java.util.HashMap;
-
 public class RomanNumeral {
     // array containing all of the arabic values
-    public final int[] arabic = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+    private final int[] arabic = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
 
     // array containing all of the roman letters
-    public final String[] romans = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+    private final String[] romans = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 
 
-    public String toRoman(int num) {
+    String toRoman(int num) {
         StringBuilder roman = new StringBuilder();
         for (int i = 0; i < arabic.length; i++) {
             while (num >= arabic[i]) {
@@ -19,7 +17,7 @@ public class RomanNumeral {
         return roman.toString();
     }
 
-    public int toArabic(String roman) {
+    int toArabic(String roman) {
         for (int i = 0; i < romans.length; i++) {
             if (roman.startsWith(romans[i])) {
                 return arabic[i] + toArabic(roman.replaceFirst(romans[i], ""));

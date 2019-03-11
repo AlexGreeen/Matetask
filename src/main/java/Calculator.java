@@ -1,14 +1,8 @@
-import jdk.internal.util.xml.impl.Input;
-
 import java.util.Scanner;
 
 public class Calculator {
 
-
-
   public static void main(String[] args) {
-
-
     System.out.println(
         "Hi there. The Calculator greets you. I \n"
             + "can compute addition, subtraction, multiplication \n"
@@ -30,10 +24,10 @@ public class Calculator {
 
 
   @org.jetbrains.annotations.NotNull
-  static String compute(int type, String[] tokens, RomanNumeral rn) {
+  private static String compute(int type, String[] tokens, RomanNumeral rn) {
     int result = 0;
-    int operand1 = 0;
-    int operand2 = 0;
+    int operand1;
+    int operand2;
 
     if (type == 0) {
       operand1 = rn.toArabic(tokens[0]);
@@ -60,6 +54,7 @@ public class Calculator {
         result = operand1 / operand2;
         break;
     }
+    if (type == 0) return rn.toRoman(result);
 
     return String.valueOf(result);
   }
@@ -68,7 +63,7 @@ public class Calculator {
    1 if Arabic
    0 if Roman
    and -1 if input is incorrect*/
-  static int arabicOrRoman(String[] tokens) {
+  private static int arabicOrRoman(String[] tokens) {
     if (InputValidator.isArabic(tokens)) {
       return 1;
     }
